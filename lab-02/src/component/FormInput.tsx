@@ -1,6 +1,6 @@
 // components/FormInput.tsx
 
-import { InputHTMLAttributes } from "react";
+import type { InputHTMLAttributes } from "react";
 
 type Props = InputHTMLAttributes<HTMLInputElement>;
 

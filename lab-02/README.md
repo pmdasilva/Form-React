@@ -1,75 +1,171 @@
-# React + TypeScript + Vite
+# Projeto Login React + Tailwind + React Hook Form + Axios + JSON Server
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Material de estudo desenvolvido durante a construção do projeto.
+>
+> Objetivo: criar um fluxo completo de autenticação com formulário, API fake, tratamento de erros, loading, navegação entre páginas e persistência do usuário.
 
-Currently, two official plugins are available:
+# 🎯 O que foi desenvolvido
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Ao final do projeto temos:
 
-## React Compiler
+✅ Formulário de Login
+✅ React Hook Form
+✅ Componentização
+✅ Custom Hook
+✅ Axios
+✅ API Fake com JSON Server
+✅ Tratamento de erros
+✅ Loading no botão
+✅ Persistência com Local Storage
+✅ React Router
+✅ Página Home
+✅ Estrutura organizada de projeto
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# 📦 Tecnologias utilizadas
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+React
+Typescript
+Tailwind CSS
+React Hook Form
+Axios
+React Router Dom
+Json Server
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+# 🚀 Instalação do projeto
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Clonar projeto
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+git clone SEU_REPOSITORIO
 ```
+
+## Instalar dependências
+
+```bash
+npm install
+```
+
+## Dependências
+
+```bash
+npm install react-hook-form
+npm install react-router-dom
+npm install axios
+npm install json-server
+```
+
+# 🔥 Criando a API Fake
+
+Crie o arquivo `db.json`:
+
+```json
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@email.com",
+      "password": "123456",
+      "name": "Henrique"
+    }
+  ]
+}
+```
+
+No package.json:
+
+```json
+{
+  "scripts": {
+    "server": "json-server --watch db.json --port 3001"
+  }
+}
+```
+
+Executar:
+
+```bash
+npm run server
+```
+
+# 🌎 Axios
+
+```ts
+import axios from 'axios';
+
+export const api = axios.create({
+  baseURL: 'http://localhost:3001'
+});
+```
+
+# 🔐 Auth Service
+
+```ts
+import { api } from './api';
+
+export const authService = {
+  async login(email: string, password: string) {
+    const response = await api.get('/users');
+
+    const user = response.data.find(
+      (user: any) =>
+        user.email === email &&
+        user.password === password
+    );
+
+    return user;
+  }
+};
+```
+
+# ✅ Testes
+
+## Login válido
+
+Email:
+
+```txt
+admin@email.com
+```
+
+Senha:
+
+```txt
+123456
+```
+
+Resultado:
+
+```txt
+Redirecionamento para Home
+```
+
+## Login inválido
+
+Resultado:
+
+```txt
+Usuário ou senha inválidos
+```
+
+## API desligada
+
+Resultado:
+
+```txt
+Erro ao conectar com servidor
+```
+
+# 🚀 Próximos passos
+
+- Logout
+- Private Routes
+- Context API
+- Backend Node.js + Express
+- JWT
+- Banco de Dados
+
+---
+
+Projeto construído para estudos de arquitetura React, componentização, hooks, services e autenticação.

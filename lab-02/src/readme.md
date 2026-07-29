@@ -1,0 +1,4 @@
+# Endpoints
+
+### GET:
+http://localhost:3001/users

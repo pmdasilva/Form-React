@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "cors": "^2.8.6",
+    "marked": "^18.0.5",
+    "pdf-parse": "^2.4.5",
+    "tailwindcss": "^4.3.3"
+  }
+}

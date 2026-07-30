@@ -3,26 +3,25 @@ import { useForm } from 'react-hook-form';
 import { authService } from '../services/authService';
 import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
-import type {ContactFormData } from '../../types/contact.types';
+import type { ContactFormData } from '../../types/contact.types';
 
 
 
 
 export default function useContactForm() {
-    
+
     const navigate = useNavigate();
     const [loginError, setLoginError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    
+
     const {
         register,
         handleSubmit,
-        // formState: { errors }
     } = useForm<ContactFormData>();
-    
-    
 
-    const onSubmit = async (data) => {
+
+
+    const onSubmit = async (data: any) => {
 
 
         try {
@@ -46,7 +45,7 @@ export default function useContactForm() {
             }
 
             if (user) {
-                
+
                 localStorage.setItem(
                     "user",
                     JSON.stringify(user)
@@ -57,13 +56,13 @@ export default function useContactForm() {
             }
 
             navigate("/home")
-        
-        } catch{
+
+        } catch {
             setLoginError("Erro ao conectar com o servidor");
         } finally {
             setIsLoading(false)
         }
-        
+
     }
 
     return {

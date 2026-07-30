@@ -17,7 +17,7 @@ export default function useContactForm() {
     const {
         register,
         handleSubmit,
-        formState: { errors }
+        // formState: { errors }
     } = useForm<ContactFormData>();
     
     

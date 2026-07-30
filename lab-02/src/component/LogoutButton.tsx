@@ -13,6 +13,7 @@ export default function LogoutButton() {
         <button
             disabled={isLogoutOut}
             className="
+            
             cursor-pointer
             rounded-md
             bg-red-500

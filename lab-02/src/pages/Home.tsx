@@ -1,7 +1,12 @@
+import LogoutButton from "../component/LogoutButton";
+
 export default function Home() {
+
     const user = JSON.parse(
         localStorage.getItem("user") || "{}"
     );
+
+
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-100 to-blue-100">
@@ -15,6 +20,9 @@ export default function Home() {
                     <span className="rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700">
                         {user.email}
                     </span>
+                    <LogoutButton
+
+                    />
                 </div>
             </header>
 

@@ -1,4 +1,4 @@
-export interface ContactFormData {
+export interface LoginFormData {
     email: string,
     password: string
 }

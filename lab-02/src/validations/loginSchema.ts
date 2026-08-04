@@ -1,4 +1,4 @@
-// validations/contactSchema.ts
+// validations/loginSchema.ts
 export const emailValidation = {
     required: "Email obrigatório",
     pattern: {

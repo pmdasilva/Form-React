@@ -29,6 +29,7 @@ export default function LogoutButton() {
             "
             onClick={() => {
                 setLogout(true);
+                localStorage.removeItem("user");
                 navigate('/');
             }}
         >

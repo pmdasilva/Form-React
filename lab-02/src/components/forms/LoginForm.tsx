@@ -1,24 +1,26 @@
-import { emailValidation, passwordValidation } from '../validations/contactSchema';
-import ErrorMassage from './ErrorMassage';
-import { FormInput } from './FormInput';
-import useContactForm from './hooks/useForm';
-import { SubmitButton } from './SubmitButton';
+import { emailValidation, passwordValidation } from "../../validations/loginSchema";
+import ErrorMessage from "../feedback/ErrorMessage";
+import { FormInput } from "../ui/FormInput";
+import useLoginForm from "../../hooks/useLoginForm";
+import { SubmitButton } from "../ui/SubmitButton";
 
-export default function Form() {
+export default function LoginForm() {
     const {
         register,
         handleSubmit,
         onSubmit,
+        onInvalidSubmit,
         loginError,
         isLoading,
-    } = useContactForm();
+        clearLoginError,
+    } = useLoginForm();
 
     return (
         <div className="flex min-h-screen items-center justify-center bg-gray-100">
 
             <form
 
-                onSubmit={handleSubmit(onSubmit)}
+                onSubmit={handleSubmit(onSubmit, onInvalidSubmit)}
 
                 className="w-full max-w-md rounded-xl bg-white p-6 shadow-lg space-y-4">
                 <h2 className="text-2xl font-bold text-center text-gray-800">
@@ -42,8 +44,9 @@ export default function Form() {
                     isLoading={isLoading}
                 />
 
-                <ErrorMassage
-                    massageError={loginError}
+                <ErrorMessage
+                    errorMessage={loginError}
+                    onClose={clearLoginError}
                 />
             </form>
 
